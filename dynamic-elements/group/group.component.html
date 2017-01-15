@@ -1,0 +1,22 @@
+<div class="dynamic-input-wrapper">
+{{ config.label }}
+</div>
+<div [formGroup]="control">
+    <template let-element ngFor [ngForOf]="config.meta.propertiesType">
+      <div [ngSwitch]="element.type">
+        <div *ngSwitchCase="'group'">
+          <td-dynamic-element [formGroupName]="element.name" [config]="element" [dynamicControl]="control.controls[element.name]">
+          </td-dynamic-element>
+        </div>
+        <div *ngSwitchCase="'array'">
+          <td-dynamic-element [formArrayName]="element.name" [config]="element" [dynamicControl]="control.controls[element.name]">
+          </td-dynamic-element>
+        </div>
+        <div *ngSwitchDefault>
+          <td-dynamic-element [formControlName]="element.name" [config]="element" [dynamicControl]="control.controls[element.name]">
+          </td-dynamic-element>
+        </div>
+      </div>
+    </template>
+</div>
+    

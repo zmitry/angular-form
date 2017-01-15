@@ -1,0 +1,32 @@
+{
+  "name": "@angular-form",
+  "version": "0.1",
+  "description": "fork of Teradata UI Platform Dynamic Forms Module without dependencies",
+  "keywords": [
+    "angular",
+    "components",
+    "reusable",
+    "dynamic",
+    "forms"
+  ],
+  "scripts": {
+  },
+  "engines": {
+    "node": ">4.4 < 7",
+    "npm": ">= 3"
+  },
+  "license": "MIT",
+  "author": "Teradata UX",
+  "contributors": [
+    "kraken <kraken@ex.ua>"
+  ],
+  "dependencies": {
+    "@angular/platform-browser-dynamic": "^2.4.3",
+    "@angular/platform-browser": "^2.4.3",
+    "@angular/common": "^2.4.3",
+    "@angular/compiler": "^2.4.3",
+    "@angular/core": "~2.4.3",
+    "@angular/forms": "~2.4.3",
+    "@angular/http": "~2.4.3"
+  }
+}

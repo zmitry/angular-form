@@ -1,0 +1,25 @@
+<form [formGroup]="dynamicForm" novalidate>
+  <div layout="row">
+    <template let-element ngFor [ngForOf]="elements">
+      <div [ngSwitch]="element.type">
+        <div *ngSwitchCase="'group'">
+          <td-dynamic-element [formGroupName]="element.name" [config]="element" [dynamicControl]="dynamicForm.controls[element.name]">
+          </td-dynamic-element>
+        </div>
+        <div *ngSwitchCase="'array'">
+          <td-dynamic-element [formArrayName]="element.name" [config]="element" [dynamicControl]="dynamicForm.controls[element.name]">
+          </td-dynamic-element>
+        </div>
+        <!--<div *ngSwitchCase="'custom'">
+            <dynamic-forms-custom-input [config]="element" [dynamicControl]="dynamicForm.controls[element.name]"> 
+            </dynamic-forms-custom-input>
+        </div>-->
+        <div *ngSwitchDefault>
+          <td-dynamic-element [formControlName]="element.name" [config]="element" [dynamicControl]="dynamicForm.controls[element.name]">
+          </td-dynamic-element>
+        </div>
+      </div>
+    </template>
+  </div>
+  <ng-content></ng-content>
+</form>

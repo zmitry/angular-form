@@ -1,0 +1,24 @@
+<div [formGroup]="control">
+  <div *ngFor="let element of control.controls;let i = index">
+    <div [ngSwitch]="config.meta.elementsType.type">
+      <div *ngSwitchCase="'array'">
+        <td-dynamic-element [formArrayName]="i" [dynamicControl]="control.controls[i]" [config]="config.meta.elementsType">
+        </td-dynamic-element>
+      </div>
+      <div *ngSwitchCase="'group'">
+        <td-dynamic-element [formGroupName]="i" [dynamicControl]="control.controls[i]" [config]="config.meta.elementsType">
+        </td-dynamic-element>
+      </div>
+      <div *ngSwitchDefault>
+        <td-dynamic-element [formControlName]="i" [dynamicControl]="control.controls[i]" [config]="config.meta.elementsType">
+        </td-dynamic-element>
+      </div>
+    </div>
+      <button type="button" (click)="popElementAt(i)">
+      X
+    </button>
+  </div>
+  <button type="button" (click)="pushElement(config.meta.elementsType)">
+    push element
+  </button>
+</div>
