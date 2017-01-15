@@ -101,11 +101,11 @@ export class DynamicFormsComponent implements OnInit{
               private _changeDetectorRef: ChangeDetectorRef) {
     this.dynamicForm = this._formBuilder.group({});
   }
-
+  submit(){
+    console.log(this.value);
+  }
 
   ngOnInit() { 
-    this.dynamicForm.valueChanges.subscribe(el=>{
-      console.log(el);
-    })
-  }
+}
+
 }

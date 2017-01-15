@@ -1,7 +1,11 @@
-    <input #elementInput
-            [(ngModel)]="value"
-            [placeholder]="config.label"
-            [type]="config.type"
-            [required]="config.required"
-            [min]="config.min"
-            [max]="config.max">
+
+    <label class="form-control-label" *ngIf="config.label">
+  {{ config.label }}
+  </label>
+    <div>
+        <input #elementInput [(ngModel)]="value" [placeholder]="config.meta.placeholder ||''" class="form-control" [type]="config.meta?.inputType||'text'"
+            [required]="config.meta?.required" [min]="config.min" [max]="config.max">
+        <div class="alert alert-danger" *ngIf="control.errors">
+            {{control.errors|json}}
+        </div>
+    </div>

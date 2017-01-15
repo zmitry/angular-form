@@ -1,4 +1,4 @@
-import { Component, Directive, Input, HostBinding, OnInit } from '@angular/core';
+import { Component, Directive, Input, HostBinding, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ViewChild, ViewContainerRef } from '@angular/core';
 import { ComponentFactoryResolver, ComponentRef, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
@@ -49,13 +49,6 @@ export class DynamicElementComponent extends AbstractControlValueAccessor
 
   @ViewChild(TdDynamicElementDirective) childElement: TdDynamicElementDirective;
 
-  @HostBinding('attr.flex')
-  get flex(): any {
-    if (this.config.type) {
-      return this._dynamicFormsService.getDefaultElementFlex(this.config.type);
-    }
-    return true;
-  }
 
   @HostBinding('attr.max')
   get maxAttr(): any {
@@ -67,17 +60,21 @@ export class DynamicElementComponent extends AbstractControlValueAccessor
     return this.config.type;
   }
 
-  constructor(private _componentFactoryResolver: ComponentFactoryResolver,
+  constructor(private _componentFactoryResolver: ComponentFactoryResolver, public vf:ViewContainerRef,
+     public _changeDetectorRef: ChangeDetectorRef,
               private _dynamicFormsService: DynamicFormsService,public fs : DynamicFormsService) {
                 super();
   }
   ngOnInit(): void {
-    this.config.onInit&&this.config.onInit(this);
+    if(this.config.onInit)
+    this.config.onInit(this);
 
     let ref: ComponentRef<any> = this._componentFactoryResolver.
       resolveComponentFactory(this._dynamicFormsService.getDynamicElement(this.config.type))
       .create(this.childElement.viewContainer.injector);
-    this.childElement.viewContainer.insert(ref.hostView);
+    this.childElement.viewContainer.insert(ref.hostView,0);
+
+
     ref.instance.control = this.dynamicControl;
     ref.instance.config = this.config;
     ref.instance.label = this.config.label;

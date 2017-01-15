@@ -1,10 +1,16 @@
-import { ControlValueAccessor, FormGroup } from '@angular/forms';
-import { OnInit } from '@angular/core';
+import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { OnInit, forwardRef } from '@angular/core';
 import { IDynamicElementConfig, DynamicFormsService } from '../services/dynamic-forms.service';
 
 const noop: any = () => {
   // empty method
 };
+
+export const getRef = (el) => ({
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => el),
+  multi: true
+});
 
 export abstract class AbstractControlValueAccessor implements ControlValueAccessor, OnInit {
 

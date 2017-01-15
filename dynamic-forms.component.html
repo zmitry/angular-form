@@ -1,25 +1,26 @@
 <form [formGroup]="dynamicForm" novalidate>
-  <div layout="row">
-    <template let-element ngFor [ngForOf]="elements">
-      <div [ngSwitch]="element.type">
-        <div *ngSwitchCase="'group'">
-          <td-dynamic-element [formGroupName]="element.name" [config]="element" [dynamicControl]="dynamicForm.controls[element.name]">
+  <div   style="display:flex;flex-wrap:wrap">
+    <template let-element ngFor [ngForOf]="elements" >
+      <div [ngSwitch]="element.type" [ngClass]="element?.className">
+        <template [ngSwitchCase]="'group'">
+          <td-dynamic-element [formGroupName]="element.name"  [config]="element" [dynamicControl]="dynamicForm.controls[element.name]">
           </td-dynamic-element>
-        </div>
-        <div *ngSwitchCase="'array'">
-          <td-dynamic-element [formArrayName]="element.name" [config]="element" [dynamicControl]="dynamicForm.controls[element.name]">
+        </template>
+        <template [ngSwitchCase]="'array'">
+          <td-dynamic-element [formArrayName]="element.name"  [config]="element" [dynamicControl]="dynamicForm.controls[element.name]">
           </td-dynamic-element>
-        </div>
-        <!--<div *ngSwitchCase="'custom'">
-            <dynamic-forms-custom-input [config]="element" [dynamicControl]="dynamicForm.controls[element.name]"> 
-            </dynamic-forms-custom-input>
-        </div>-->
-        <div *ngSwitchDefault>
+        </template>
+        <template ngSwitchDefault>
           <td-dynamic-element [formControlName]="element.name" [config]="element" [dynamicControl]="dynamicForm.controls[element.name]">
           </td-dynamic-element>
-        </div>
+        </template>
       </div>
     </template>
   </div>
+  <button type="button"
+(click)="submit()"
+  >
+  submit
+  </button>
   <ng-content></ng-content>
 </form>

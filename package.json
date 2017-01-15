@@ -1,6 +1,9 @@
 {
-  "name": "@angular-form",
-  "version": "0.1",
+  "name": "angular-form",
+  "version": "0.0.1",
+  "author": {
+    "name": "D/ Zherebko"
+  },
   "description": "fork of Teradata UI Platform Dynamic Forms Module without dependencies",
   "keywords": [
     "angular",
@@ -9,24 +12,26 @@
     "dynamic",
     "forms"
   ],
-  "scripts": {
-  },
+  "scripts": {},
   "engines": {
     "node": ">4.4 < 7",
     "npm": ">= 3"
   },
   "license": "MIT",
-  "author": "Teradata UX",
   "contributors": [
-    "kraken <kraken@ex.ua>"
+    "D/ Zherebko <kraken@ex.ua>"
   ],
+  "repository": {
+    "url": "https://github.com/kraken97/angular-form"
+  },
   "dependencies": {
-    "@angular/platform-browser-dynamic": "^2.4.3",
-    "@angular/platform-browser": "^2.4.3",
     "@angular/common": "^2.4.3",
     "@angular/compiler": "^2.4.3",
     "@angular/core": "~2.4.3",
     "@angular/forms": "~2.4.3",
-    "@angular/http": "~2.4.3"
+    "@angular/http": "~2.4.3",
+    "@angular/platform-browser": "^2.4.3",
+    "@angular/platform-browser-dynamic": "^2.4.3",
+    "angular2-select": "^1.0.0-beta.2"
   }
 }

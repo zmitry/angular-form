@@ -4,11 +4,17 @@ import { DynamicInputComponent } from '../dynamic-elements/dynamic-input/dynamic
 import { DynamicTextareaComponent } from '../dynamic-elements/dynamic-textarea/dynamic-textarea.component';
 import { TdDynamicArrayComponent } from '../dynamic-elements/array/array.component';
 import { DynamicGroupComponent } from '../dynamic-elements/group/group.component';
+import { SelectComponent } from '../dynamic-elements/mutliselect/mutliselect.component';
+import { DynamicCheckboxComponent } from '../dynamic-elements/checkbox/checkbox.component';
 
 
 export enum DynamicElement {
   Input = <any>'input',
-  Custom = <any>'custom',
+  Checkbox = <any>'checkbox',
+  Select = <any>'select',
+  Color = <any>'color',
+  MultiLine = <any>'multiline',
+  File = <any>'file',
   Array = <any>'array',
   Group = <any>'group',
 }
@@ -23,6 +29,7 @@ interface IArrayMetaConfig {
 }
 interface IInputMetaConfig {
   inputType: string,
+  placeholder: string,
   max?: any,
   min?: any,
   selections?: any[]
@@ -30,6 +37,7 @@ interface IInputMetaConfig {
 
 export interface IDynamicElementConfig {
   label?: string;
+  className?: string,
   name: string;
   type:  DynamicElement;
   meta?: any,
@@ -59,12 +67,16 @@ export class DynamicFormsService {
    */
   getDynamicElement(element: DynamicElement): any {
     switch (element) {
+      case DynamicElement.Select:
+          return SelectComponent;
       case DynamicElement.Input:
         return DynamicInputComponent;
       case DynamicElement.Array:
         return TdDynamicArrayComponent;
       case DynamicElement.Group:
         return DynamicGroupComponent;
+      case DynamicElement.Checkbox:
+        return DynamicCheckboxComponent
       default:
         throw `Error: type ${element} does not exist or not supported.`;
     }

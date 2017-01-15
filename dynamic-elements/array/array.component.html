@@ -1,24 +1,27 @@
-<div [formGroup]="control">
-  <div *ngFor="let element of control.controls;let i = index">
-    <div [ngSwitch]="config.meta.elementsType.type">
-      <div *ngSwitchCase="'array'">
+<div [formGroup]="control" [ngClass]="config?.className" >
+  <div *ngFor="let element of control.controls;let i = index" >
+    <div [ngSwitch]="config.meta.elementsType.type"  >
+ <button type="button"  (click)="popElementAt(i)" class="close" aria-label="Close" stlye="position:absolute;right:0;">
+  <span aria-hidden="true">&times;</span>
+</button>
+      <template [ngSwitchCase]="'array'">
         <td-dynamic-element [formArrayName]="i" [dynamicControl]="control.controls[i]" [config]="config.meta.elementsType">
         </td-dynamic-element>
-      </div>
-      <div *ngSwitchCase="'group'">
+      </template>
+      <template [ngSwitchCase]="'group'">
         <td-dynamic-element [formGroupName]="i" [dynamicControl]="control.controls[i]" [config]="config.meta.elementsType">
         </td-dynamic-element>
-      </div>
-      <div *ngSwitchDefault>
+      </template>
+      <template ngSwitchDefault>
         <td-dynamic-element [formControlName]="i" [dynamicControl]="control.controls[i]" [config]="config.meta.elementsType">
         </td-dynamic-element>
-      </div>
+      </template>
     </div>
-      <button type="button" (click)="popElementAt(i)">
-      X
-    </button>
+
   </div>
-  <button type="button" (click)="pushElement(config.meta.elementsType)">
+  <div class="col-md-12">
+    <button type="button" (click)="pushElement(config.meta.elementsType)">
     push element
   </button>
+  </div>
 </div>
