@@ -1,0 +1,16 @@
+<div [ngClass]="config?.className"> 
+    <label class="form-control-label" *ngIf="config.label">
+  {{ config.label }}
+  </label>
+    <div class="checkbox">
+
+        <label class="switch switch-3d switch-primary">
+                <input class="switch-input" type="checkbox" [required]="config.meta?.required" [(ngModel)]="value" >
+                <span class="switch-label"></span>
+                <span class="switch-handle"></span>
+        	</label>
+    </div>
+    <div class="alert alert-danger" *ngIf="control.errors">
+        {{control.errors|json}}
+    </div>
+</div>
