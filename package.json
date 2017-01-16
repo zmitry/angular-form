@@ -1,5 +1,5 @@
 {
-  "name": "angular-form",
+  "name": "@kraken97/angular-form",
   "version": "0.0.1",
   "author": {
     "name": "D/ Zherebko"
@@ -27,9 +27,9 @@
   "dependencies": {
     "@angular/common": "^2.4.3",
     "@angular/compiler": "^2.4.3",
-    "@angular/core": "~2.4.3",
-    "@angular/forms": "~2.4.3",
-    "@angular/http": "~2.4.3",
+    "@angular/core": "^2.4.3",
+    "@angular/forms": "^2.4.3",
+    "@angular/http": "^2.4.3",
     "@angular/platform-browser": "^2.4.3",
     "@angular/platform-browser-dynamic": "^2.4.3",
     "angular2-select": "^1.0.0-beta.2"
