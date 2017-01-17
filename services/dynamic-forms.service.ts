@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Validators, ValidatorFn, FormControl, FormArray, FormGroup } from '@angular/forms';
 import { DynamicInputComponent } from '../dynamic-elements/dynamic-input/dynamic-input.component';
 import { DynamicTextareaComponent } from '../dynamic-elements/dynamic-textarea/dynamic-textarea.component';
-import { TdDynamicArrayComponent } from '../dynamic-elements/array/array.component';
+import { DynamicArrayComponent } from '../dynamic-elements/array/array.component';
 import { DynamicGroupComponent } from '../dynamic-elements/group/group.component';
-import { SelectComponent } from '../dynamic-elements/mutliselect/mutliselect.component';
 import { DynamicCheckboxComponent } from '../dynamic-elements/checkbox/checkbox.component';
+import { DynamicSelectComponent } from '../dynamic-elements/multiselect/multiselect.component';
+import { DynamicFileComponent } from '../dynamic-elements/file/file.component';
 
 
 export enum DynamicElement {
@@ -68,11 +69,13 @@ export class DynamicFormsService {
   getDynamicElement(element: DynamicElement): any {
     switch (element) {
       case DynamicElement.Select:
-          return SelectComponent;
+          return DynamicSelectComponent;
       case DynamicElement.Input:
         return DynamicInputComponent;
       case DynamicElement.Array:
-        return TdDynamicArrayComponent;
+        return DynamicArrayComponent;
+      case DynamicElement.File:
+        return DynamicFileComponent;
       case DynamicElement.Group:
         return DynamicGroupComponent;
       case DynamicElement.Checkbox:

@@ -7,7 +7,7 @@ import { DynamicInputComponent } from '../dynamic-input/dynamic-input.component'
 
 export const ARRAY_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => TdDynamicArrayComponent),
+  useExisting: forwardRef(() => DynamicArrayComponent),
   multi: true,
 };
 
@@ -17,7 +17,7 @@ export const ARRAY_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   templateUrl: './array.component.html',
   styleUrls: [ './array.component.css' ]
 })
-export class TdDynamicArrayComponent extends AbstractControlValueAccessor implements ControlValueAccessor {
+export class DynamicArrayComponent extends AbstractControlValueAccessor implements ControlValueAccessor {
   control: FormArray;
   fs : DynamicFormsService
 

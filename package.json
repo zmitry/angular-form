@@ -32,6 +32,7 @@
     "@angular/http": "^2.4.3",
     "@angular/platform-browser": "^2.4.3",
     "@angular/platform-browser-dynamic": "^2.4.3",
-    "angular2-select": "^1.0.0-beta.2"
+    "angular2-select": "^1.0.0-beta.2",
+    "ng2-file-upload": "^1.1.4-2"
   }
 }

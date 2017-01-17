@@ -1,5 +1,5 @@
 <div [formGroup]="control" [ngClass]="config?.className" >
-  <div *ngFor="let element of control.controls;let i = index" >
+  <div *ngFor="let element of control.controls;let i = index" [ngClass]="удуьуте?.className" >
     <div [ngSwitch]="config.meta.elementsType.type"  >
  <button type="button"  (click)="popElementAt(i)" class="close" aria-label="Close" stlye="position:absolute;right:0;">
   <span aria-hidden="true">&times;</span>

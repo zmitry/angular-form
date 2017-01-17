@@ -5,21 +5,25 @@ import {DynamicElementComponent, TdDynamicElementDirective} from './dynamic-elem
 import {DynamicFormsService} from './services/dynamic-forms.service';
 import {DynamicInputComponent} from './dynamic-elements/dynamic-input/dynamic-input.component';
 import {DynamicTextareaComponent} from './dynamic-elements/dynamic-textarea/dynamic-textarea.component';
-import {TdDynamicArrayComponent} from './dynamic-elements/array/array.component';
+import {DynamicArrayComponent} from './dynamic-elements/array/array.component';
 import {DynamicGroupComponent} from './dynamic-elements/group/group.component';
 import {BrowserModule} from '@angular/platform-browser';
-import {SelectComponent} from './dynamic-elements/mutliselect/mutliselect.component';
 import {SelectModule} from 'angular2-select';
 import {DynamicCheckboxComponent} from './dynamic-elements/checkbox/checkbox.component';
+import { DynamicSelectComponent } from './dynamic-elements/multiselect/multiselect.component';
+import { FileUploadModule } from 'ng2-file-upload';
+import { DynamicFileComponent } from './dynamic-elements/file/file.component';
+
 const TD_DYNAMIC_FORMS : Type < any > [] = [DynamicFormsComponent, DynamicElementComponent, TdDynamicElementDirective];
 
 export const TD_DYNAMIC_FORMS_ENTRY_COMPONENTS : Type < any > [] = [
   DynamicGroupComponent,
   DynamicCheckboxComponent,
-  TdDynamicArrayComponent,
+  DynamicArrayComponent,
   DynamicInputComponent,
   DynamicTextareaComponent,
-  SelectComponent
+  DynamicSelectComponent,
+  DynamicFileComponent,
 ];
 
 const MODULE_CONFIG = {
@@ -27,7 +31,8 @@ const MODULE_CONFIG = {
     TD_DYNAMIC_FORMS, TD_DYNAMIC_FORMS_ENTRY_COMPONENTS
   ],
   imports: [
-    ReactiveFormsModule, BrowserModule, FormsModule, SelectModule
+    ReactiveFormsModule, BrowserModule, FormsModule, SelectModule,
+    FileUploadModule
   ],
   exports: [
     TD_DYNAMIC_FORMS, TD_DYNAMIC_FORMS_ENTRY_COMPONENTS
