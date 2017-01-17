@@ -1,0 +1,24 @@
+
+<label class="form-control-label" *ngIf="config.label">
+  {{ config.label }}
+</label>
+    <div>
+      <input type="file" ng2FileSelect  (change)="change($event)"    [uploader]="uploader" />
+        <div *ngIf="uploader.queue.length!==0">
+            <a href="{{ getFilePath()}}"> <img src="{{getFilePath(item)}}" style="width:50px;height:50px" alt="">
+                <br> {{item?.file?.name}}
+            </a>
+        </div>
+
+        <div *ngIf="uploader.queue.length==0">
+            <div *ngFor="let item of config.default||[]">
+            <a href="{{ getFilePath(item)}}"> <img src="{{getFilePath(item)}}" style="width:50px;height:50px" alt="">
+                <br> {{item?.file?.name}}
+            </a>
+            </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="control.errors">
+            {{control.errors|json}}
+        </div>
+</div>
+

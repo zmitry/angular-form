@@ -1,0 +1,10 @@
+<label class="form-control-label" *ngIf="config.label">
+  {{ config.label }}
+  </label>
+<div>
+    <ng-select [(ngModel)]="value" [options]="config.meta.options" [multiple]="config.meta.multiple" [placeholder]="config.meta.placeholder">
+    </ng-select>
+    <div class="alert alert-danger" *ngIf="control.touched&&control.errors">
+        {{control.errors|json}}
+    </div>
+</div>
